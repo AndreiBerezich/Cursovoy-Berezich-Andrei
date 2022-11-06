@@ -1,0 +1,71 @@
+unit Unit4;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, mmsystem, IniFiles,
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+
+type
+  TForm4 = class(TForm)
+    CheckBox1: TCheckBox;
+    Image1: TImage;
+    CheckBox2: TCheckBox;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+  Ini: TIniFile;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit2;
+
+procedure TForm4.Button1Click(Sender: TObject);
+begin
+Ini:= TIniFile.create(Extractfilepath(Paramstr(0))+'config.ini');
+Ini.WriteBool('Settings','Sound', checkbox1.checked);
+if form4.checkbox1.checked then
+begin
+  SndPlaySound('C:\Users\user\Desktop\ ”–—ќ¬ќ… ѕ–ќ≈ “ Ч копи€ Ч копи€ Ч копи€ Ч копи€ Ч копи€\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm4.CheckBox1Click(Sender: TObject);
+begin
+if checkbox1.checked then form2.button1.caption:='¬ключен' else form2.button1.caption:='¬ыключен';
+
+end;
+
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+Ini:= TIniFile.create(Extractfilepath(Paramstr(0))+'config.ini');
+checkbox1.checked:=Ini.ReadBool('Settings','Sound', checkbox1.checked);
+if checkbox1.checked then form2.button1.caption:='¬ключен' else form2.button1.caption:='¬ыключен';
+end;
+
+procedure TForm4.Image1Click(Sender: TObject);
+begin
+Ini:= TIniFile.create(Extractfilepath(Paramstr(0))+'config.ini');
+Ini.WriteBool('Settings','Sound', checkbox1.checked);
+if form4.checkbox1.checked then
+begin
+  SndPlaySound('C:\Users\user\Desktop\ ”–—ќ¬ќ… ѕ–ќ≈ “ Ч копи€ Ч копи€ Ч копи€ Ч копи€ Ч копи€\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);
+begin
+form4.close;
+end;
+end;
+end;
+
+end.

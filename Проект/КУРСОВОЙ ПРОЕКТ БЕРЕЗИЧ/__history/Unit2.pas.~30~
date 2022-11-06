@@ -1,0 +1,96 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.MPlayer, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage, mmsystem, Vcl.StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    MediaPlayer1: TMediaPlayer;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    MediaPlayer2: TMediaPlayer;
+    procedure Button1Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit3, Unit4, Unit5;
+
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+Form4.show;
+
+end;
+
+procedure TForm2.FormActivate(Sender: TObject);
+begin
+MediaPlayer1.filename:='C:\Users\user\Desktop\йспянбни опнейр аепегхв\цКЮБМНЕ ЛЕМЧ.wmv';
+MediaPlayer1.Open;
+MediaPlayer1.Play;
+begin
+if form4.checkbox2.checked then
+begin
+MediaPlayer2.filename:='C:\Users\user\Desktop\йспянбни опнейр аепегхв\Win32\Debug\mainmenu.wav';
+MediaPlayer2.Open;
+MediaPlayer2.Play;
+end;
+end;
+end;
+
+procedure TForm2.Image1Click(Sender: TObject);
+begin
+Form2.hide;
+form3.show;
+begin
+if form4.checkbox1.checked then
+begin
+  SndPlaySound('C:\Users\user\Desktop\йспянбни опнейр аепегхв\Win32\Debug\МЮФЮРХЕ ЙМНОЙХ.wav', SND_ASYNC);
+end;
+end;
+end;
+
+
+procedure TForm2.Image2Click(Sender: TObject);
+begin
+Form4.showmodal;
+begin
+  if form4.checkbox1.checked then
+begin
+  SndPlaySound('C:\Users\user\Desktop\йспянбни опнейр аепегхв\Win32\Debug\МЮФЮРХЕ ЙМНОЙХ.wav', SND_ASYNC);
+end;
+end;
+end;
+
+procedure TForm2.Image3Click(Sender: TObject);
+begin
+Form5.show;
+end;
+
+procedure TForm2.Image4Click(Sender: TObject);
+begin
+close;
+end;
+
+end.

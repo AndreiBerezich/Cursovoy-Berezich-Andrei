@@ -1,0 +1,182 @@
+unit Unit5;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.OleCtrls, SHDocVw,
+  Vcl.ExtCtrls, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage, Vcl.Menus, ShellAPI,mmsystem;
+
+type
+  TForm5 = class(TForm)
+    WebBrowser1: TWebBrowser;
+    Image1: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image8: TImage;
+    Image9: TImage;
+    Image10: TImage;
+    Image11: TImage;
+    Image12: TImage;
+    aa: TMemo;
+    Memo1: TMemo;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Image12Click(Sender: TObject);
+    procedure Image11Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure Image10Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit3, Unit4, Unit2;
+
+procedure TForm5.Button1Click(Sender: TObject); //Вернутся на карту
+begin
+Form5.hide;
+Form3.show;
+
+end;
+
+procedure TForm5.Button2Click(Sender: TObject); //показ информации о новом замке
+begin
+WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Новый замок.htm');
+end;
+
+procedure TForm5.Button3Click(Sender: TObject);//показ информации и фото о музее Богдановича
+begin
+WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Музей Богдановича.htm');
+end;
+
+procedure TForm5.FormCreate(Sender: TObject); //показ информации и фото о старом замке
+begin
+WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Старый замок.htm');
+Form5.Image1.Picture.LoadFromFile ('Старый замок фото.jpg');
+end;
+
+procedure TForm5.Image10Click(Sender: TObject);//показ информации и фото о музее истории Городницы
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Музей истории Городницы.htm');
+Form5.Image1.Picture.LoadFromFile ('Музей истории Городницы фото.jpg');
+if form4.checkbox1.checked then //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image11Click(Sender: TObject);//переход на главное меню
+begin
+form5.close;
+form2.show;
+if form4.checkbox1.checked then //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image12Click(Sender: TObject);  //переход на карту
+begin
+form5.close;
+form3.show;
+if form4.checkbox1.checked then //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+
+end;
+
+procedure TForm5.Image3Click(Sender: TObject); //показ информации и фото о Старом музее
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Старый замок.htm');
+Form5.Image1.Picture.LoadFromFile ('Старый замок фото.jpg');
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image4Click(Sender: TObject); //показ информации и фото о Новом замке
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Новый замок.htm');
+Form5.Image1.Picture.LoadFromFile ('Новый замок фото.jpg');
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image5Click(Sender: TObject);//показ информации и фото о музее Богдановича
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Музей Богдановича.htm');
+Form5.Image1.Picture.LoadFromFile('фото.jpg');
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image6Click(Sender: TObject); //показ информации и фото о аптеке-музее
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Аптека-музей.htm');
+Form5.Image1.Picture.LoadFromFile ('Аптека-музей.jpg');
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image8Click(Sender: TObject);//показ информации и фото о дворце Тизенгауза
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Дворец Тизенгауза.htm');
+Form5.Image1.Picture.LoadFromFile ('Дворец Тизенгауза фото.jpg');
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.Image9Click(Sender: TObject); //показ информации и фото о музее истории религии
+begin
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'Музей истории религии.htm');
+Form5.Image1.Picture.LoadFromFile ('Музей истории религии фото.jpg');
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm5.N1Click(Sender: TObject);
+begin
+ShellExecute(Handle, 'open', 'Help.chm', nil,nil, SW_NORMAL);
+end;
+
+procedure TForm5.N2Click(Sender: TObject);
+begin
+close;
+end;
+
+end.

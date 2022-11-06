@@ -1,0 +1,114 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.MPlayer, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage, mmsystem, Vcl.StdCtrls, ShellAPI, Vcl.Menus;
+
+type
+  TForm2 = class(TForm)
+    MediaPlayer1: TMediaPlayer;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    MediaPlayer2: TMediaPlayer;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit3, Unit4, Unit5, Unit6, Unit7;
+
+
+
+
+procedure TForm2.FormActivate(Sender: TObject);  //когда форма активна вопроизводится видео
+begin
+MediaPlayer1.filename:='C:\Users\user\Desktop\КУРСОВОЙ ПРОЕКТ БЕРЕЗИЧ\Главное меню.wmv';
+MediaPlayer1.Open;
+MediaPlayer1.Play;
+begin
+if form4.checkbox2.checked then   //если стоит соответсвующая галочка в настройках, то вопроизводится аудио
+begin
+MediaPlayer2.filename:='C:\Users\user\Desktop\КУРСОВОЙ ПРОЕКТ БЕРЕЗИЧ\Win32\Debug\mainmenu.wav';
+MediaPlayer2.Open;
+MediaPlayer2.Play;
+end;
+end;
+end;
+
+procedure TForm2.Image1Click(Sender: TObject);//при нажатии осуществляется переход на карту
+begin
+Form2.hide;
+form3.show;
+begin
+if form4.checkbox1.checked then //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('C:\Users\user\Desktop\КУРСОВОЙ ПРОЕКТ БЕРЕЗИЧ\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);//звук нажатия на кнопку
+end;
+end;
+end;
+
+
+procedure TForm2.Image2Click(Sender: TObject);  // при нажатии на кнопку открывается меню настроек
+begin
+Form4.showmodal;
+begin
+  if form4.checkbox1.checked then  //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('C:\Users\user\Desktop\КУРСОВОЙ ПРОЕКТ БЕРЕЗИЧ\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+end;
+
+procedure TForm2.Image3Click(Sender: TObject); //при нажатии появляется форма с информацией о музяех
+begin
+Form5.show;
+if form4.checkbox1.checked then //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('C:\Users\user\Desktop\КУРСОВОЙ ПРОЕКТ БЕРЕЗИЧ\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm2.Image4Click(Sender: TObject); //при нажатии на кнопку программа закрывается
+begin
+close;
+if form4.checkbox1.checked then    //воспроизведение звука нажатия если в настройках стоит галочка
+begin
+  SndPlaySound('C:\Users\user\Desktop\КУРСОВОЙ ПРОЕКТ БЕРЕЗИЧ\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm2.N1Click(Sender: TObject); //кнопка справочного меню
+begin
+ShellExecute(Handle, 'open', 'Help.chm', nil,nil, SW_NORMAL);
+end;
+
+procedure TForm2.N2Click(Sender: TObject);
+begin
+Form7.show;
+end;
+
+end.

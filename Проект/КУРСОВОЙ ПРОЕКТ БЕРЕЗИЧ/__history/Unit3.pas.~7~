@@ -1,0 +1,72 @@
+unit Unit3;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, mmsystem, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.Imaging.jpeg;
+
+type
+  TForm3 = class(TForm)
+    o: TImage;
+    Button1: TButton;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    procedure Button1Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit2, Unit4, Unit5;
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+Form3.hide;
+Form2.show;
+if form4.checkbox1.checked then
+begin
+  SndPlaySound('C:\Users\user\Desktop\ ”–—ќ¬ќ… ѕ–ќ≈ “ Ч копи€ Ч копи€ Ч копи€ Ч копи€ Ч копи€\Win32\Debug\нажатие кнопки.wav', SND_ASYNC);
+end;
+end;
+
+procedure TForm3.Image1Click(Sender: TObject);
+begin
+Form5.show;
+Form3.close;
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'курсовой34.htm');
+end;
+
+procedure TForm3.Image5Click(Sender: TObject);
+begin
+form5.show;
+form3.close;
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'курсовой36.htm');
+end;
+
+procedure TForm3.Image8Click(Sender: TObject);
+begin
+form5.show;
+form3.close;
+Form5.WebBrowser1.Navigate(extractfilepath(paramstr(0))+'курсовой35.htm');
+end;
+
+end.
